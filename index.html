@@ -1,81 +1,62 @@
 
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <title>Controle Financeiro</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    button {
-      margin: 5px;
-      padding: 10px 20px;
-    }
-    .linha-cabecalho {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .linha-inputs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .linha-botoes {
-      margin-bottom: 20px;
-    }
-    #listaValores {
-      margin-top: 10px;
-    }
-    #divisao ul {
-      list-style: none;
-      padding-left: 0;
-    }
-  </style>
 </head>
-<body>
+<body style="font-family: Arial; padding: 20px;">
+  <h2>📆 Ganhos até o fim do ano (145 dias úteis)</h2>
+  <input type="number" id="valorDiario" placeholder="Valor por dia (ex: 150)" step="0.01" />
+  <button onclick="calcularGanho()">Calcular Ganho</button>
+  <p id="resultadoGanho" style="font-weight: bold;"></p>
 
-  <h1>💸 Controle Financeiro</h1>
+  <hr>
 
-  <div class="linha-cabecalho">
-    <img src="https://cdn-icons-png.flaticon.com/512/1087/1087840.png" alt="Mercado Financeiro" width="40" height="40">
-    <button onclick="alert('Mostrar gráfico aqui')">📈 Gráfico</button>
-  </div>
+  <h2>📋 Adicionar Entradas Manuais</h2>
+  <input type="date" id="data" />
+  <input type="text" id="descricao" placeholder="Descrição da origem" />
+  <input type="number" id="valor" placeholder="Digite um valor" step="0.01" />
+  <button onclick="adicionarValor()">Adicionar</button>
+  <button onclick="alternarLista()">👁 Mostrar/Ocultar Valores</button>
+  <button onclick="limparHistorico()">🧹 Limpar Histórico</button>
 
-  <div class="linha-inputs">
-    <label>📅 Data: <input type="date" id="data" /></label>
-    <label>📝 Origem: <input type="text" id="descricao" placeholder="Ex: salário, extra..." /></label>
-    <label>💰 Valor: <input type="number" id="valor" /></label>
-  </div>
-
-  <div class="linha-botoes">
-    <button onclick="adicionarValor()">Adicionar</button>
-    <button onclick="alternarLista()">Mostrar/Ocultar Lista</button>
-    <button onclick="limparHistorico()">🗑️ Limpar Histórico</button>
-  </div>
-
-  <h3>📑 Lista de Entradas:</h3>
+  <h3>Valores adicionados:</h3>
   <ul id="listaValores" style="display: none;"></ul>
 
-  <h3>📊 Total: R$ <span id="total">0.00</span></h3>
+  <h3>Total: R$ <span id="total">0.00</span></h3>
 
+  <h3>Divisão em porcentagens:</h3>
   <div id="divisao"></div>
 
   <script>
+    function calcularGanho() {
+      const valor = parseFloat(document.getElementById("valorDiario").value);
+      if (isNaN(valor) || valor <= 0) {
+        document.getElementById("resultadoGanho").innerText = "❌ Digite um valor válido.";
+        return;
+      }
+      const resultado = valor * 145;
+      document.getElementById("resultadoGanho").innerText = `💰 Ganho estimado: R$ ${resultado.toFixed(2)} em 145 dias úteis.`;
+    }
+
     let entradas = [];
     let mostrar = false;
 
     const porcentagens = [10, 10, 10, 17.8, 1.97, 1.97, 1.97, 1.97, 2.17, 1.32, 1.32, 30.83];
     const nomes = [
-      "Dízimo", "Reserva", "Investimento", "Aluguel",
-      "Arroz e Feijão", "Legumes e Verduras", "Proteínas",
-      "Água", "Energia", "Celular 1", "Celular 2", "Advogada"
+      "Dízimo",
+      "Reserva",
+      "Investimento",
+      "Aluguel",
+      "Arroz e Feijão",
+      "Legumes e Verduras",
+      "Proteínas",
+      "Água",
+      "Energia",
+      "Celular 1",
+      "Celular 2",
+      "Advogada"
     ];
 
     function diasEntreDatas(dataInicial, dataFinal) {
@@ -89,7 +70,9 @@
 
     function carregarEntradas() {
       const dados = localStorage.getItem('entradas');
-      if (dados) entradas = JSON.parse(dados);
+      if (dados) {
+        entradas = JSON.parse(dados);
+      }
     }
 
     function salvarInvestimento(novoValor) {
@@ -227,3 +210,4 @@
   </script>
 </body>
 </html>
+
