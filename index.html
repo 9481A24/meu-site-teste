@@ -1,19 +1,229 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Site Teste</title>
+  <meta charset="UTF-8" />
+  <title>Controle Financeiro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+    }
+    .linha-cabecalho {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .linha-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .linha-botoes {
+      margin-bottom: 20px;
+    }
+    #listaValores {
+      margin-top: 10px;
+    }
+    #divisao ul {
+      list-style: none;
+      padding-left: 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>Aprendendo Github!</h1>
-  <p>Esse é meu primeiro site no GitHub Pages.</p>
 
- <div class="linha">
-    <strong>O que é GitHub?</strong>
-    <p>O GitHub é uma plataforma de hospedagem de código que usa o sistema de controle de versão Git. Ele permite colaborar, versionar e armazenar projetos.</p>
-    <div class="data">📅 Data: <span id="data1"></span></div>
+  <h1>💸 Controle Financeiro</h1>
+
+  <div class="linha-cabecalho">
+    <img src="https://cdn-icons-png.flaticon.com/512/1087/1087840.png" alt="Mercado Financeiro" width="40" height="40">
+    <button onclick="alert('Mostrar gráfico aqui')">📈 Gráfico</button>
   </div>
-  
+
+  <div class="linha-inputs">
+    <label>📅 Data: <input type="date" id="data" /></label>
+    <label>📝 Origem: <input type="text" id="descricao" placeholder="Ex: salário, extra..." /></label>
+    <label>💰 Valor: <input type="number" id="valor" /></label>
+  </div>
+
+  <div class="linha-botoes">
+    <button onclick="adicionarValor()">Adicionar</button>
+    <button onclick="alternarLista()">Mostrar/Ocultar Lista</button>
+    <button onclick="limparHistorico()">🗑️ Limpar Histórico</button>
+  </div>
+
+  <h3>📑 Lista de Entradas:</h3>
+  <ul id="listaValores" style="display: none;"></ul>
+
+  <h3>📊 Total: R$ <span id="total">0.00</span></h3>
+
+  <div id="divisao"></div>
+
+  <script>
+    let entradas = [];
+    let mostrar = false;
+
+    const porcentagens = [10, 10, 10, 17.8, 1.97, 1.97, 1.97, 1.97, 2.17, 1.32, 1.32, 30.83];
+    const nomes = [
+      "Dízimo", "Reserva", "Investimento", "Aluguel",
+      "Arroz e Feijão", "Legumes e Verduras", "Proteínas",
+      "Água", "Energia", "Celular 1", "Celular 2", "Advogada"
+    ];
+
+    function diasEntreDatas(dataInicial, dataFinal) {
+      const diffMs = dataFinal - dataInicial;
+      return Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    }
+
+    function salvarEntradas() {
+      localStorage.setItem('entradas', JSON.stringify(entradas));
+    }
+
+    function carregarEntradas() {
+      const dados = localStorage.getItem('entradas');
+      if (dados) entradas = JSON.parse(dados);
+    }
+
+    function salvarInvestimento(novoValor) {
+      const hoje = new Date().toISOString();
+      let dadosAntigos = carregarInvestimento();
+
+      if (!dadosAntigos) {
+        dadosAntigos = { valorInicial: 0, data: hoje };
+      }
+
+      const valorAtualizado = dadosAntigos.valorInicial + novoValor;
+
+      const dados = {
+        valorInicial: valorAtualizado,
+        data: hoje
+      };
+
+      localStorage.setItem('investimento', JSON.stringify(dados));
+    }
+
+    function carregarInvestimento() {
+      const dados = localStorage.getItem('investimento');
+      if (dados) return JSON.parse(dados);
+      return null;
+    }
+
+    function calcularInvestimentoAtualizado() {
+      const dados = carregarInvestimento();
+      if (!dados) return 0;
+
+      const valorInicial = dados.valorInicial;
+      const dataSalva = new Date(dados.data);
+      const hoje = new Date();
+      const dias = diasEntreDatas(dataSalva, hoje);
+      if (dias <= 0) return valorInicial;
+
+      return valorInicial * Math.pow(1 + 0.10, dias);
+    }
+
+    function formatarData(dataStr) {
+      const d = new Date(dataStr);
+      return d.toLocaleDateString('pt-BR');
+    }
+
+    function atualizarLista() {
+      const lista = document.getElementById('listaValores');
+      lista.innerHTML = '';
+      entradas.forEach(({ data, descricao, valor }) => {
+        const li = document.createElement('li');
+        li.textContent = `[${formatarData(data)}] ${descricao}: R$ ${valor.toFixed(2)}`;
+        lista.appendChild(li);
+      });
+    }
+
+    function atualizarSoma() {
+      const total = entradas.reduce((acc, entrada) => acc + entrada.valor, 0);
+      document.getElementById('total').textContent = total.toFixed(2);
+      atualizarDivisao(total);
+    }
+
+    function atualizarDivisao(total) {
+      let html = '<ul>';
+      porcentagens.forEach((p, i) => {
+        let valor = total * (p / 100);
+        let cor = "";
+
+        if (nomes[i] === "Investimento") {
+          salvarInvestimento(valor);
+          valor = calcularInvestimentoAtualizado();
+        }
+
+        if (
+          nomes[i] === "Arroz e Feijão" ||
+          nomes[i] === "Legumes e Verduras" ||
+          nomes[i] === "Proteínas"
+        ) {
+          cor = 'style="color: #2E7D32; font-weight: bold;"'; // Verde escuro
+        }
+
+        html += `<li ${cor}>${nomes[i]}: R$ ${valor.toFixed(2)} (${p}%)</li>`;
+      });
+      html += '</ul>';
+      document.getElementById('divisao').innerHTML = html;
+    }
+
+    function adicionarValor() {
+      const dataInput = document.getElementById('data');
+      const descInput = document.getElementById('descricao');
+      const valorInput = document.getElementById('valor');
+
+      const data = dataInput.value;
+      const descricao = descInput.value.trim();
+      const valor = parseFloat(valorInput.value);
+
+      if (!data) return alert("Informe a data.");
+      if (!descricao) return alert("Digite uma descrição.");
+      if (isNaN(valor) || valor <= 0) return alert("Digite um valor válido.");
+
+      entradas.push({ data, descricao, valor });
+      salvarEntradas();
+
+      const hoje = new Date().toISOString().split('T')[0];
+      dataInput.value = hoje;
+      descInput.value = '';
+      valorInput.value = '';
+      atualizarLista();
+      atualizarSoma();
+    }
+
+    function alternarLista() {
+      mostrar = !mostrar;
+      document.getElementById('listaValores').style.display = mostrar ? 'block' : 'none';
+    }
+
+    function limparHistorico() {
+      if (confirm("Tem certeza que deseja apagar todo o histórico?")) {
+        localStorage.removeItem('entradas');
+        localStorage.removeItem('investimento');
+        entradas = [];
+        atualizarLista();
+        atualizarSoma();
+        alert("Histórico apagado com sucesso!");
+      }
+    }
+
+    window.onload = () => {
+      const dataInput = document.getElementById('data');
+      const hoje = new Date().toISOString().split('T')[0];
+      dataInput.value = hoje;
+
+      carregarEntradas();
+      atualizarLista();
+      atualizarSoma();
+    };
+  </script>
 </body>
 </html>
