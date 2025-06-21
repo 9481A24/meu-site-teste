@@ -6,26 +6,46 @@
   <title>Controle Financeiro</title>
   <style>
     body {
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       padding: 20px;
     }
 
     input, button {
-      margin: 4px 0;
-      padding: 8px 10px;
+      margin: 6px 4px 6px 0;
+      padding: 10px 14px;
       font-size: 16px;
+      border-radius: 6px;
+      border: none;
     }
 
     button {
       cursor: pointer;
-      background-color: #f2f2f2;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 1px 2px 4px rgba(0,0,0,0.1);
     }
 
-    button:hover {
-      background-color: #e0e0e0;
+    button:active {
+      transform: scale(0.98);
+    }
+
+    button.adicionar {
+      background-color: #1976D2;
+      color: white;
+    }
+
+    button.mostrar {
+      background-color: #757575;
+      color: white;
+    }
+
+    button.limpar {
+      background-color: #d32f2f;
+      color: white;
+    }
+
+    button.calcular {
+      background-color: #388e3c;
+      color: white;
     }
 
     ul {
@@ -40,7 +60,7 @@
       margin-bottom: 4px;
       border-radius: 4px;
       border-left: 4px solid #1976D2;
-      font-size: 17px; /* AUMENTA A FONTE */
+      font-size: 17px;
     }
 
     .verde {
@@ -52,18 +72,18 @@
 <body>
   <h2>📆 Ganhos até o fim do ano (145 dias úteis)</h2>
   <input type="number" id="valorDiario" placeholder="Valor por dia (ex: 150)" step="0.01" />
-  <button onclick="calcularGanho()">Calcular Ganho</button>
+  <button class="calcular" onclick="calcularGanho()">Calcular Ganho</button>
   <p id="resultadoGanho" style="font-weight: bold;"></p>
 
   <hr>
 
-  <h2>📋 Controle Financeiro</h2>
+  <h2>📋 Adicionar Entradas Manuais</h2>
   <input type="date" id="data" />
   <input type="text" id="descricao" placeholder="Descrição da origem" />
   <input type="number" id="valor" placeholder="Digite um valor" step="0.01" />
-  <button onclick="adicionarValor()">Adicionar</button>
-  <button onclick="alternarLista()">👁 Mostrar/Ocultar Valores</button>
-  <button onclick="limparHistorico()">🧹 Limpar Histórico</button>
+  <button class="adicionar" onclick="adicionarValor()">Adicionar</button>
+  <button class="mostrar" onclick="alternarLista()">👁 Mostrar/Ocultar Valores</button>
+  <button class="limpar" onclick="limparHistorico()">🧹 Limpar Histórico</button>
 
   <h3>Valores adicionados:</h3>
   <ul id="listaValores" style="display: none;"></ul>
@@ -153,7 +173,6 @@
       const dias = diasEntreDatas(dataSalva, hoje);
       if (dias <= 0) return valorInicial;
 
-      // Rendimento diário composto de 10% ao dia (ajuste se desejar)
       return valorInicial * Math.pow(1 + 0.10, dias);
     }
 
@@ -217,8 +236,6 @@
 
       entradas.push({ data, descricao, valor });
       salvarEntradas();
-
-      // Somar entrada ao investimento acumulado
       salvarInvestimento(valor);
 
       const hoje = new Date().toISOString().split('T')[0];
@@ -237,8 +254,7 @@
 
     function limparHistorico() {
       if (confirm("Tem certeza que deseja apagar todo o histórico?")) {
-        localStorage.removeItem('entradas'); // apaga só as entradas
-        // investimento NÃO é removido, fica preservado
+        localStorage.removeItem('entradas');
         entradas = [];
         atualizarLista();
         atualizarSoma();
