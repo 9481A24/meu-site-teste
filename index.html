@@ -4,8 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <title>Controle Financeiro</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    ul { list-style: none; padding-left: 0; }
+    li { margin-bottom: 6px; }
+    .verde { color: #2E7D32; font-weight: bold; }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 20px;">
+<body>
   <h2>📆 Ganhos até o fim do ano (145 dias úteis)</h2>
   <input type="number" id="valorDiario" placeholder="Valor por dia (ex: 150)" step="0.01" />
   <button onclick="calcularGanho()">Calcular Ganho</button>
@@ -109,6 +115,7 @@
       const dias = diasEntreDatas(dataSalva, hoje);
       if (dias <= 0) return valorInicial;
 
+      // Rendimento diário composto de 10% ao dia (ajuste se desejar)
       return valorInicial * Math.pow(1 + 0.10, dias);
     }
 
@@ -140,7 +147,6 @@
         let cor = "";
 
         if (nomes[i] === "Investimento") {
-          salvarInvestimento(valor);
           valor = calcularInvestimentoAtualizado();
         }
 
@@ -149,7 +155,7 @@
           nomes[i] === "Legumes e Verduras" ||
           nomes[i] === "Proteínas"
         ) {
-          cor = 'style="color: #2E7D32; font-weight: bold;"'; // Verde escuro
+          cor = 'class="verde"';
         }
 
         html += `<li ${cor}>${nomes[i]}: R$ ${valor.toFixed(2)} (${p}%)</li>`;
@@ -174,10 +180,14 @@
       entradas.push({ data, descricao, valor });
       salvarEntradas();
 
+      // Somar entrada ao investimento acumulado
+      salvarInvestimento(valor);
+
       const hoje = new Date().toISOString().split('T')[0];
       dataInput.value = hoje;
       descInput.value = '';
       valorInput.value = '';
+
       atualizarLista();
       atualizarSoma();
     }
@@ -189,8 +199,8 @@
 
     function limparHistorico() {
       if (confirm("Tem certeza que deseja apagar todo o histórico?")) {
-        localStorage.removeItem('entradas');
-        localStorage.removeItem('investimento');
+        localStorage.removeItem('entradas'); // apaga só as entradas
+        // investimento NÃO é removido, fica preservado
         entradas = [];
         atualizarLista();
         atualizarSoma();
