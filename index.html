@@ -4,139 +4,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria - Elas Reformas e Acabamento</title>
+  <title>Marido de Aluguel - Soluções Rápidas para Sua Casa</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      font-family: Arial, sans-serif;
+      background: #fdfdfd;
+      color: #222;
     }
 
     header {
-      background-color:#ffffff;
-      color:#000000;
-      padding: 30px 20px;
+      background: #007bff;
+      color: white;
       text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .servico {
+      margin-bottom: 30px;
+    }
+
+    .servico h2 {
+      color: #007bff;
     }
 
     .galeria {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
       display: flex;
-      flex-direction: column;
-      gap: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
     }
 
     .galeria img {
-      width: 98%;
+      width: 300px;
       border-radius: 10px;
-      display: block;
-      margin: 0 auto;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .depoimentos {
+      background: #f0f0f0;
+      padding: 40px 20px;
+    }
+
+    .depoimento {
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      margin-top: 20px;
     }
 
     footer {
-      background-color: #111;
+      background: #111;
       color: white;
+      text-align: center;
       padding: 20px;
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .botoes-flutuantes {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 999;
-    }
-
-    .btn-flutuante {
-      padding: 14px 24px;
-      font-weight: 600;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 1em;
-      text-align: center;
-      white-space: nowrap;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: all 0.3s ease;
-      border: none;
-    }
-
-    .btn-flutuante:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    }
-
-    .btn-whatsapp {
-      background-color: #eafff2;
-      color: #128C7E;
-      border: 2px solid #25D366;
-    }
-
-    .btn-instagram {
-      background-color: #fff0f7;
-      color: #C13584;
-      border: 2px solid #C13584;
-    }
-
-    .btn-cta {
-      background-color: #fff8dc;
-      color: #b38f00;
-      border: 2px solid #FFD700;
-    }
-
-    @media(max-width:600px) {
-      .btn-flutuante {
-        font-size: 0.9em;
-        padding: 10px 15px;
-      }
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1 style="font-size: 1.6em; font-weight: 600; color: #000; margin: 5px 0;">
-      Azulejista Profissional.
-    </h1>
-    <p style="font-size: 1.6em; font-weight: 600; color: #000; margin: 5px 0;">
-      Instalador Hidraulico.
-    </p>
-    <p style="font-size: 1.6em; font-weight: 600; color: #000; margin: 5px 0;">
-      Pequenos Reparos.
-    </p>
+    <h1>Marido de Aluguel</h1>
+    <p>Porcelanato | Elétrica | Hidraúilica | Manutenção Completa</p>
   </header>
 
-  <section class="galeria">
-    <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/48X48-ESTATUARIO-polished-porcelain-tile.jpg" alt="Estatuário 48x48">
-    
-    <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/Marmi_Invisdible_Grey_Large_Format_Porcelain_Tile_MM110_-_room_x700%20(1).png" alt="Marmi Invisible Grey">
-    
-    <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/Statuario120x240lastra-battutodilistelli-seminatoditesserelapp.amb.hall_v1_current_2000x.jpg" alt="Statuario 120x240">
-    
-    <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/azra-statuario-coffee-24x48-commercial-floor-2_1000x.jpg" alt="Azra Coffee 24x48">
-    
-    <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/images%20(6).jpeg" alt="Instalação Profissional">
-    
-    <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/images%20(3).jpeg" alt="Detalhe de Acabamento">
+  <section>
+    <div class="servico">
+      <h2>Serviços Oferecidos</h2>
+      <ul>
+        <li>Instalação de porcelanato</li>
+        <li>Serviços elétricos residenciais</li>
+        <li>Manutenção e instalação hidráulica</li>
+        <li>Pequenos reparos e ajustes</li>
+      </ul>
+    </div>
+
+    <div class="servico">
+      <h2>Fotos de Trabalhos Realizados</h2>
+      <div class="galeria">
+        <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/48X48-ESTATUARIO-polished-porcelain-tile.jpg" alt="Porcelanato 1">
+        <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/images%20(6).jpeg" alt="Porcelanato 2">
+        <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/images%20(3).jpeg" alt="Porcelanato 3">
+      </div>
+    </div>
+  </section>
+
+  <section class="depoimentos">
+    <h2>Depoimentos de Clientes</h2>
+    <div class="depoimento">
+      "Excelente serviço, rápido e caprichado. Recomendo!" - Carla M.
+    </div>
+    <div class="depoimento">
+      "Profissional atencioso e confiável. Resolvi tudo em um dia!" - Rafael S.
+    </div>
+  </section>
+
+  <section>
+    <h2>Localização</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.941864660194!2d-43.939133!3d-19.856263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa690f3a3f0f3b1%3A0xf390a5b088ae9c51!2sBelo%20Horizonte%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1719353498042" allowfullscreen></iframe>
   </section>
 
   <footer>
-    © 2025 Elas Reformas e Acabamento - Todos os direitos reservados
+    CNPJ: 00.000.000/0001-00 - Marido de Aluguel BH <br>
+    © 2025 Todos os direitos reservados
   </footer>
-
-  <div class="botoes-flutuantes">
-    <a href="https://wa.me/5531995439612" class="btn-flutuante btn-whatsapp">WhatsApp</a>
-    <a href="https://instagram.com/genesisazulejista" class="btn-flutuante btn-instagram">Instagram</a>
-    <a href="https://wa.me/5531995439612" class="btn-flutuante btn-cta">Peça Orçamento</a>
-  </div>
-
 </body>
 </html>
 
