@@ -2,128 +2,78 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marido de Aluguel - Soluções Rápidas para Sua Casa</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Landing Page - Marido de Aluguel</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
       font-family: Arial, sans-serif;
-      background: #fdfdfd;
-      color: #222;
     }
 
-    header {
-      background: #007bff;
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .servico {
-      margin-bottom: 30px;
-    }
-
-    .servico h2 {
-      color: #007bff;
-    }
-
-    .galeria {
+    .imagem-fundo {
+      background-image: url('https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/48X48-ESTATUARIO-polished-porcelain-tile.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
       display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
+      align-items: center;
       justify-content: center;
-    }
-
-    .galeria img {
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .depoimentos {
-      background: #f0f0f0;
-      padding: 40px 20px;
-    }
-
-    .depoimento {
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: 0;
-      margin-top: 20px;
-    }
-
-    footer {
-      background: #111;
       color: white;
       text-align: center;
       padding: 20px;
-      font-size: 0.9em;
+    }
+
+    .imagem-fundo h1 {
+      font-size: 2.8em;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+    }
+
+    .conteudo {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .mapa {
+      width: 100%;
+      height: 400px;
+      margin-top: 40px;
+    }
+
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Marido de Aluguel</h1>
-    <p>Porcelanato | Elétrica | Hidraúilica | Manutenção Completa</p>
-  </header>
 
-  <section>
-    <div class="servico">
-      <h2>Serviços Oferecidos</h2>
-      <ul>
-        <li>Instalação de porcelanato</li>
-        <li>Serviços elétricos residenciais</li>
-        <li>Manutenção e instalação hidráulica</li>
-        <li>Pequenos reparos e ajustes</li>
-      </ul>
-    </div>
-
-    <div class="servico">
-      <h2>Fotos de Trabalhos Realizados</h2>
-      <div class="galeria">
-        <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/48X48-ESTATUARIO-polished-porcelain-tile.jpg" alt="Porcelanato 1">
-        <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/images%20(6).jpeg" alt="Porcelanato 2">
-        <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/images%20(3).jpeg" alt="Porcelanato 3">
-      </div>
-    </div>
+  <section class="imagem-fundo">
+    <h1>Serviços de Qualidade para Sua Casa</h1>
   </section>
 
-  <section class="depoimentos">
-    <h2>Depoimentos de Clientes</h2>
-    <div class="depoimento">
-      "Excelente serviço, rápido e caprichado. Recomendo!" - Carla M.
-    </div>
-    <div class="depoimento">
-      "Profissional atencioso e confiável. Resolvi tudo em um dia!" - Rafael S.
-    </div>
+  <section class="conteudo">
+    <h2>Marido de Aluguel - Porcelanato, Elétrica, Hidráulica</h2>
+    <p>Adicione aqui suas descrições, depoimentos, fotos e muito mais.</p>
   </section>
 
-  <section>
-    <h2>Localização</h2>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.941864660194!2d-43.939133!3d-19.856263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa690f3a3f0f3b1%3A0xf390a5b088ae9c51!2sBelo%20Horizonte%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1719353498042" allowfullscreen></iframe>
-  </section>
+  <iframe class="mapa"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.494177519557!2d-43.93939818563142!3d-19.932129886600996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699fdd8755ffb%3A0x66f33102d0955f1e!2sPra%C3%A7a%20Sete%20de%20Setembro!5e0!3m2!1spt-BR!2sbr!4v1655651553444!5m2!1spt-BR!2sbr"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
 
   <footer>
-    CNPJ: 00.000.000/0001-00 - Marido de Aluguel BH <br>
-    © 2025 Todos os direitos reservados
+    © 2025 - Seu CNPJ ou Nome da Empresa Aqui
   </footer>
+
 </body>
 </html>
 
