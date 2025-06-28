@@ -2,276 +2,85 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Controle Financeiro</title>
+  <meta charset="UTF-8">
+  <title>Galeria de Porcelanato Lastra</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
+      background-color: #fff;
+      font-family: sans-serif;
+      color: #000;
+      margin: 20px;
     }
 
-    input, button {
-      margin: 6px 4px 6px 0;
-      padding: 14px 22px;
-      font-size: 18px;
-      border-radius: 6px;
-      border: none;
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
     }
 
-    button {
-      cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
-      box-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+    .foto {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    button:active {
-      transform: scale(0.98);
+    .foto img {
+      width: 100%;
+      display: block;
     }
 
-    button.adicionar {
-      background-color: #1976D2;
+    .legenda {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background-color: rgba(0,0,0,0.6);
       color: white;
-    }
-
-    button.mostrar {
-      background-color: #757575;
-      color: white;
-    }
-
-    button.limpar {
-      background-color: #d32f2f;
-      color: white;
-    }
-
-    button.calcular {
-      background-color: #388e3c;
-      color: white;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 15px;
-    }
-
-    #listaValores li,
-    #divisao ul li {
-      background: #f9f9f9;
-      padding: 6px 10px;
-      margin-bottom: 4px;
-      border-radius: 4px;
-      border-left: 4px solid #1976D2;
-      font-size: 17px;
-    }
-
-    .verde {
-      color: #2E7D32;
+      padding: 10px 15px;
+      font-size: 1em;
+      border-radius: 5px;
       font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h2>📆 Ganhos até o fim do ano (145 dias úteis)</h2>
-  <input type="number" id="valorDiario" placeholder="Valor por dia (ex: 150)" step="0.01" />
-  <button class="calcular" onclick="calcularGanho()">Calcular Ganho</button>
-  <p id="resultadoGanho" style="font-weight: bold;"></p>
 
-  <hr>
+  <h2>Galeria de Porcelanato Lastra</h2>
 
-  <h2>📋 Controle Financeiro</h2>
-  <input type="date" id="data" />
-  <input type="text" id="descricao" placeholder="Descrição da origem" />
-  <input type="number" id="valor" placeholder="Digite um valor" step="0.01" />
-  <button class="adicionar" onclick="adicionarValor()">Adicionar</button>
-  <button class="mostrar" onclick="alternarLista()">👁 Mostrar/Ocultar Valores</button>
-  <button class="limpar" onclick="limparHistorico()">🧹 Limpar Histórico</button>
+  <div class="galeria">
+    <div class="foto">
+      <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/48X48-ESTATUARIO-polished-porcelain-tile.jpg" alt="Imagem 1">
+      <div class="legenda">Estatuário 48x48 Polido</div>
+    </div>
 
-  <h3>Valores adicionados:</h3>
-  <ul id="listaValores" style="display: none;"></ul>
+    <div class="foto">
+      <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/Marmi_Invisdible_Grey_Large_Format_Porcelain_Tile_MM110_-_room_x700%20(1).png" alt="Imagem 2">
+      <div class="legenda">Marmi Invisible Grey</div>
+    </div>
 
-  <h3>Total: R$ <span id="total">0.00</span></h3>
+    <div class="foto">
+      <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/Statuario120x240lastra-battutodilistelli-seminatoditesserelapp.amb.hall_v1_current_2000x.jpg" alt="Imagem 3">
+      <div class="legenda">Statuario 120x240 Lastra</div>
+    </div>
 
-  <h3>Divisão em porcentagens:</h3>
-  <div id="divisao"></div>
+    <div class="foto">
+      <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/azra-statuario-coffee-24x48-commercial-floor-2_1000x.jpg" alt="Imagem 4">
+      <div class="legenda">Azra Statuario Coffee 24x48</div>
+    </div>
 
-  <script>
-    function calcularGanho() {
-      const valor = parseFloat(document.getElementById("valorDiario").value);
-      if (isNaN(valor) || valor <= 0) {
-        document.getElementById("resultadoGanho").innerText = "❌ Digite um valor válido.";
-        return;
-      }
-      const resultado = valor * 145;
-      document.getElementById("resultadoGanho").innerText = `💰 Ganho estimado: R$ ${resultado.toFixed(2)} em 145 dias úteis.`;
-    }
+    <div class="foto">
+      <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/images%20(6).jpeg" alt="Imagem 5">
+      <div class="legenda">Instalação Profissional</div>
+    </div>
 
-    let entradas = [];
-    let mostrar = false;
+    <div class="foto">
+      <img src="https://raw.githubusercontent.com/9481A24/Azulejistaprofissional/main/images%20(3).jpeg" alt="Imagem 6">
+      <div class="legenda">Detalhe de Acabamento</div>
+    </div>
+  </div>
 
-    const porcentagens = [10, 10, 10, 17.8, 1.97, 1.97, 1.97, 1.97, 2.17, 1.32, 1.32, 30.83];
-    const nomes = [
-      "Dízimo",
-      "Reserva",
-      "Investimento",
-      "Aluguel",
-      "Arroz e Feijão",
-      "Legumes e Verduras",
-      "Proteínas",
-      "Água",
-      "Energia",
-      "Celular 1",
-      "Celular 2",
-      "Advogada"
-    ];
-
-    function diasEntreDatas(dataInicial, dataFinal) {
-      const diffMs = dataFinal - dataInicial;
-      return Math.floor(diffMs / (1000 * 60 * 60 * 24));
-    }
-
-    function salvarEntradas() {
-      localStorage.setItem('entradas', JSON.stringify(entradas));
-    }
-
-    function carregarEntradas() {
-      const dados = localStorage.getItem('entradas');
-      if (dados) {
-        entradas = JSON.parse(dados);
-      }
-    }
-
-    function salvarInvestimento(novoValor) {
-      const hoje = new Date().toISOString();
-      let dadosAntigos = carregarInvestimento();
-
-      if (!dadosAntigos) {
-        dadosAntigos = { valorInicial: 0, data: hoje };
-      }
-
-      const valorAtualizado = dadosAntigos.valorInicial + novoValor;
-
-      const dados = {
-        valorInicial: valorAtualizado,
-        data: hoje
-      };
-
-      localStorage.setItem('investimento', JSON.stringify(dados));
-    }
-
-    function carregarInvestimento() {
-      const dados = localStorage.getItem('investimento');
-      if (dados) return JSON.parse(dados);
-      return null;
-    }
-
-    function calcularInvestimentoAtualizado() {
-      const dados = carregarInvestimento();
-      if (!dados) return 0;
-
-      const valorInicial = dados.valorInicial;
-      const dataSalva = new Date(dados.data);
-      const hoje = new Date();
-      const dias = diasEntreDatas(dataSalva, hoje);
-      if (dias <= 0) return valorInicial;
-
-      return valorInicial * Math.pow(1 + 0.10, dias);
-    }
-
-    function formatarData(dataStr) {
-      const d = new Date(dataStr);
-      return d.toLocaleDateString('pt-BR');
-    }
-
-    function atualizarLista() {
-      const lista = document.getElementById('listaValores');
-      lista.innerHTML = '';
-      entradas.forEach(({ data, descricao, valor }) => {
-        const li = document.createElement('li');
-        li.textContent = `[${formatarData(data)}] ${descricao}: R$ ${valor.toFixed(2)}`;
-        lista.appendChild(li);
-      });
-    }
-
-    function atualizarSoma() {
-      const total = entradas.reduce((acc, entrada) => acc + entrada.valor, 0);
-      document.getElementById('total').textContent = total.toFixed(2);
-      atualizarDivisao(total);
-    }
-
-    function atualizarDivisao(total) {
-      let html = '<ul>';
-      porcentagens.forEach((p, i) => {
-        let valor = total * (p / 100);
-        let cor = "";
-
-        if (nomes[i] === "Investimento") {
-          valor = calcularInvestimentoAtualizado();
-        }
-
-        if (
-          nomes[i] === "Arroz e Feijão" ||
-          nomes[i] === "Legumes e Verduras" ||
-          nomes[i] === "Proteínas"
-        ) {
-          cor = 'class="verde"';
-        }
-
-        html += `<li ${cor}>${nomes[i]}: R$ ${valor.toFixed(2)} (${p}%)</li>`;
-      });
-      html += '</ul>';
-      document.getElementById('divisao').innerHTML = html;
-    }
-
-    function adicionarValor() {
-      const dataInput = document.getElementById('data');
-      const descInput = document.getElementById('descricao');
-      const valorInput = document.getElementById('valor');
-
-      const data = dataInput.value;
-      const descricao = descInput.value.trim();
-      const valor = parseFloat(valorInput.value);
-
-      if (!data) return alert("Informe a data.");
-      if (!descricao) return alert("Digite uma descrição.");
-      if (isNaN(valor) || valor <= 0) return alert("Digite um valor válido.");
-
-      entradas.push({ data, descricao, valor });
-      salvarEntradas();
-      salvarInvestimento(valor);
-
-      const hoje = new Date().toISOString().split('T')[0];
-      dataInput.value = hoje;
-      descInput.value = '';
-      valorInput.value = '';
-
-      atualizarLista();
-      atualizarSoma();
-    }
-
-    function alternarLista() {
-      mostrar = !mostrar;
-      document.getElementById('listaValores').style.display = mostrar ? 'block' : 'none';
-    }
-
-    function limparHistorico() {
-      if (confirm("Tem certeza que deseja apagar todo o histórico?")) {
-        localStorage.removeItem('entradas');
-        entradas = [];
-        atualizarLista();
-        atualizarSoma();
-        alert("Histórico apagado com sucesso!");
-      }
-    }
-
-    window.onload = () => {
-      const dataInput = document.getElementById('data');
-      const hoje = new Date().toISOString().split('T')[0];
-      dataInput.value = hoje;
-
-      carregarEntradas();
-      atualizarLista();
-      atualizarSoma();
-    };
-  </script>
 </body>
 </html>
+
+  
 
