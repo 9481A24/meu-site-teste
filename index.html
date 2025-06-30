@@ -2,67 +2,76 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Mini Curso CSS - Parte 1</title>
+  <meta charset="UTF-8" />
+  <title>Mini Curso CSS - Parte 2: Flexbox</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
     }
 
     header {
-      background: #222;
+      background-color: #0d6efd;
       color: white;
       text-align: center;
       padding: 20px;
     }
 
-    .imagem-container {
-      position: relative;
-      width: 100%;
-      max-width: 600px;
-      margin: 40px auto;
+    .flex-container {
+      display: flex;
+      justify-content: center; /* Alinha no centro horizontal */
+      align-items: center;      /* Alinha no centro vertical */
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 40px;
     }
 
-    .imagem-container img {
-      width: 100%;
+    .caixa {
+      background-color: white;
+      padding: 30px;
+      width: 250px;
+      height: 180px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
       border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
     }
 
-    .texto-sobre-imagem {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      color: white;
-      font-size: 1.5em;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 10px 20px;
-      border-radius: 8px;
+    .caixa h2 {
+      margin-bottom: 10px;
+      color: #0d6efd;
     }
 
     footer {
       text-align: center;
-      background: #333;
+      background-color: #212529;
       color: white;
-      padding: 10px;
-      margin-top: 40px;
+      padding: 15px;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Mini Curso CSS - Parte 1</h1>
-    <p>Aprendendo a posicionar texto sobre imagem com CSS</p>
+    <h1>Mini Curso CSS - Parte 2</h1>
+    <p>Entendendo Flexbox</p>
   </header>
 
-  <div class="imagem-container">
-    <img src="https://raw.githubusercontent.com/9481A24/Consertogeladeira/main/images%20(8).jpeg" alt="Imagem de exemplo">
-    <div class="texto-sobre-imagem">Texto por cima da imagem</div>
-  </div>
+  <section class="flex-container">
+    <div class="caixa">
+      <h2>Bloco 1</h2>
+      <p>Conteúdo alinhado usando Flexbox.</p>
+    </div>
+    <div class="caixa">
+      <h2>Bloco 2</h2>
+      <p>Se adapta em telas menores.</p>
+    </div>
+    <div class="caixa">
+      <h2>Bloco 3</h2>
+      <p>Espaçamento automático com `gap`.</p>
+    </div>
+  </section>
 
   <footer>
     © 2025 Curso CSS por Marco Lucio
