@@ -3,157 +3,73 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria - Elas Reformas e Acabamento</title>
+  <title>Mini Curso CSS - Parte 1</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      padding: 0;
+      background: #f0f0f0;
     }
 
     header {
-      background-color:#ffffff;
-      color:#000000;
-      padding: 30px 20px;
+      background: #222;
+      color: white;
       text-align: center;
+      padding: 20px;
     }
 
-    .galeria {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .galeria img {
-      width: 98%;
-      border-radius: 10px;
-      display: block;
-      margin: 0 auto;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-
-    .imagem-com-texto {
+    .imagem-container {
       position: relative;
-      display: inline-block;
+      width: 100%;
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    .imagem-container img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
     .texto-sobre-imagem {
       position: absolute;
-      top: 20%;
-      left: 10%;
-      color: red;
-      font-size: 3em;
-      font-weight: bold;
-      background: rgba(255,255,255,0.6);
+      top: 20px;
+      left: 20px;
+      color: white;
+      font-size: 1.5em;
+      background: rgba(0, 0, 0, 0.6);
       padding: 10px 20px;
       border-radius: 8px;
     }
 
     footer {
-      background-color: #111;
+      text-align: center;
+      background: #333;
       color: white;
-      padding: 20px;
-      text-align: center;
+      padding: 10px;
       margin-top: 40px;
-    }
-
-    .botoes-flutuantes {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 999;
-    }
-
-    .btn-flutuante {
-      padding: 14px 24px;
-      font-weight: 600;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 1em;
-      text-align: center;
-      white-space: nowrap;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: all 0.3s ease;
-      border: none;
-    }
-
-    .btn-flutuante:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    }
-
-    .btn-whatsapp {
-      background-color: #eafff2;
-      color: #128C7E;
-      border: 2px solid #25D366;
-    }
-
-    .btn-instagram {
-      background-color: #fff0f7;
-      color: #C13584;
-      border: 2px solid #C13584;
-    }
-
-    .btn-cta {
-      background-color: #fff8dc;
-      color: #b38f00;
-      border: 2px solid #FFD700;
-    }
-
-    @media(max-width:600px) {
-      .btn-flutuante {
-        font-size: 0.9em;
-        padding: 10px 15px;
-      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1 style="font-size: 1.6em; font-weight: 600; color: #000; margin: 5px 0;">
-      Açai Andriele e Irmãos
-    </h1>
+    <h1>Mini Curso CSS - Parte 1</h1>
+    <p>Aprendendo a posicionar texto sobre imagem com CSS</p>
   </header>
 
-  <section class="galeria">
-    <!-- Imagem com texto por cima -->
-    <div class="imagem-com-texto">
-      <img src="https://raw.githubusercontent.com/9481A24/Acai/main/IMG-20250629-WA0017.jpg" alt="Estatuário 48x48">
-      <div class="texto-sobre-imagem">AMIN</div>
-    </div>
-
-    <!-- Outras imagens normais -->
-    <img src="https://raw.githubusercontent.com/9481A24/Acai/main/IMG-20250629-WA0018.jpg" alt="Marmi Invisible Grey">
-    <img src="https://raw.githubusercontent.com/9481A24/Acai/main/IMG-20250629-WA0019.jpg" alt="Statuario 120x240">
-    <img src="https://raw.githubusercontent.com/9481A24/Acai/main/IMG-20250629-WA0020.jpg" alt="Azra Coffee 24x48">
-    <img src="https://raw.githubusercontent.com/9481A24/Acai/main/IMG-20250629-WA0021.jpg" alt="Instalação Profissional">
-    <img src="https://raw.githubusercontent.com/9481A24/Acai/main/IMG-20250629-WA0021.jpg" alt="Detalhe de Acabamento">
-  </section>
+  <div class="imagem-container">
+    <img src="https://raw.githubusercontent.com/9481A24/Consertogeladeira/main/images%20(8).jpeg" alt="Imagem de exemplo">
+    <div class="texto-sobre-imagem">Texto por cima da imagem</div>
+  </div>
 
   <footer>
-    © 2025 Elas Reformas e Acabamento - Todos os direitos reservados
+    © 2025 Curso CSS por Marco Lucio
   </footer>
-
-  <div class="botoes-flutuantes">
-    <a href="https://wa.me/5531980181551?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento%20para%20serviço%20de%20porcelanato,%20elétrica%20ou%20hidráulica." class="btn-flutuante btn-whatsapp">WhatsApp</a>
-
-    <a href="https://instagram.com/genesisazulejista" class="btn-flutuante btn-instagram">Instagram</a>
-
-    <a href="https://wa.me/5531995439612?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento.%20Vi%20seus%20trabalhos%20no%20site%20e%20me%20interessei!" class="btn-flutuante btn-cta">Peça Orçamento</a>
-  </div>
 
 </body>
 </html>
-
 
   
 
