@@ -3,79 +3,77 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Mini Curso CSS - Parte 2: Flexbox</title>
+  <title>Galeria Porcelanato Lastra</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
     }
 
-    header {
-      background-color: #0d6efd;
-      color: white;
-      text-align: center;
-      padding: 20px;
+    .galeria {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 20px;
     }
 
-    .flex-container {
-      display: flex;
-      justify-content: center; /* Alinha no centro horizontal */
-      align-items: center;      /* Alinha no centro vertical */
-      gap: 20px;
-      flex-wrap: wrap;
-      padding: 40px;
+    .imagem-banner {
+      position: relative;
+      margin-bottom: 40px;
     }
 
-    .caixa {
-      background-color: white;
-      padding: 30px;
-      width: 250px;
-      height: 180px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    .imagem-banner img {
+      width: 100%;
       border-radius: 10px;
-      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
     }
 
-    .caixa h2 {
-      margin-bottom: 10px;
-      color: #0d6efd;
-    }
-
-    footer {
+    .texto {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      font-size: 2em;
+      font-weight: bold;
       text-align: center;
-      background-color: #212529;
       color: white;
-      padding: 15px;
-      margin-top: 30px;
+      text-shadow: 2px 2px 6px black;
+      padding: 10px 20px;
+    }
+
+    @media (max-width: 600px) {
+      .texto {
+        font-size: 1.3em;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Mini Curso CSS - Parte 2</h1>
-    <p>Entendendo Flexbox</p>
-  </header>
+  <div class="galeria">
+    
+    <div class="imagem-banner">
+      <img src="https://github.com/9481A24/Consertogeladeira/blob/main/images%20(8).jpeg?raw=true" alt="Imagem 1">
+      <div class="texto">Estilo e sofisticação</div>
+    </div>
 
-  <section class="flex-container">
-    <div class="caixa">
-      <h2>Bloco 1</h2>
-      <p>Conteúdo alinhado usando Flexbox.</p>
+    <div class="imagem-banner">
+      <img src="https://github.com/9481A24/Consertogeladeira/blob/main/geladeira-1-e1724770170643.png?raw=true" alt="Imagem 2">
+      <div class="texto">Detalhe que valoriza o ambiente</div>
     </div>
-    <div class="caixa">
-      <h2>Bloco 2</h2>
-      <p>Se adapta em telas menores.</p>
-    </div>
-    <div class="caixa">
-      <h2>Bloco 3</h2>
-      <p>Espaçamento automático com `gap`.</p>
-    </div>
-  </section>
 
-  <footer>
-    © 2025 Curso CSS por Marco Lucio
-  </footer>
+    <div class="imagem-banner">
+      <img src="https://github.com/9481A24/Consertogeladeira/blob/main/download%20(1).jpeg?raw=true" alt="Imagem 3">
+      <div class="texto">Acabamento Premium</div>
+    </div>
+
+    <div class="imagem-banner">
+      <img src="https://github.com/9481A24/Consertogeladeira/blob/main/WD106.png?raw=true" alt="Imagem 4">
+      <div class="texto">Porcelanato Lastra Especial</div>
+    </div>
+
+  </div>
 
 </body>
 </html>
